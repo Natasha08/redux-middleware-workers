@@ -1,0 +1,46 @@
+{
+  "name": "redux-middleware-workers",
+  "version": "0.1.0",
+  "description": "a multiple workers solution for redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natasha08/redux-middleware-workers.git"
+  },
+  "keywords": [
+    "redux",
+    "worker",
+    "workers",
+    "webworkers",
+    "webworker",
+    "web",
+    "worker",
+    "web",
+    "workers",
+    "multiple",
+    "workers",
+    "middleware",
+    "react",
+    "webpack",
+    "worker-loader"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Natasha08/redux-middleware-workers/issues"
+  },
+  "homepage": "https://github.com/Natasha08/redux-middleware-workers#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "jest": "^21.2.1",
+    "lodash": "^4.17.4",
+    "sinon": "^4.0.0"
+  }
+}
