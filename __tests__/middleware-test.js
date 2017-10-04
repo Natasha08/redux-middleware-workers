@@ -2,7 +2,11 @@ import newWorkerMiddleware from '../src/index.js';
 
 describe('newWorkerMiddleware', () => {
   it('creates a new worker', () => {
-    const newWorker = newWorkerMiddleware({postMessage: jest.fn()}, {type: 'foo'}, jest.fn());
+    const worker = {postMessage: jest.fn()};
+    const type = 'foo';
+    const actionHelper = jest.fn();
+
+    const newWorker = newWorkerMiddleware({worker, type, actionHelper});
     expect(typeof newWorker).toBe('function');
   });
 
@@ -21,19 +25,23 @@ describe('newWorkerMiddleware', () => {
 
     it('errors when the postMessage of the worker is not a function', () => {
       expect(() => {
-        newWorkerMiddleware({postMessage: 'fake'});
+        newWorkerMiddleware({worker: {postMessage: 'fake'}});
       }).toThrow('The postMessage method of the worker instance must be a function');
     });
 
     it('errors when the action type is not defined', () => {
       expect(() => {
-        newWorkerMiddleware({postMessage: jest.fn()});
+        newWorkerMiddleware({worker: {postMessage: jest.fn()}});
       }).toThrow('A type must be defined for the scope of the worker instance');
     });
 
-    it('errors the actionHelper is supplied and is not a function', () => {
+    it('errors if the actionHelper is supplied and is not a function', () => {
+      const worker = {postMessage: jest.fn()};
+      const type = 'foo';
+      const actionHelper = 'bar';
+
       expect(() => {
-        newWorkerMiddleware({postMessage: jest.fn()}, {type: 'foo'}, {actionHelper: 'bar'});
+        newWorkerMiddleware({worker, type, actionHelper});
       }).toThrow('The third argument for newWorkerMiddleware must be a function');
     });
   });
