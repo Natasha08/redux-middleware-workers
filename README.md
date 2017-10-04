@@ -1,7 +1,7 @@
 # redux-middleware-workers
 
 ## Recommended Technologies
-[webpack](https://github.com/webpack/webpack)
+[webpack](https://github.com/webpack/webpack)  
 [worker-loader](https://github.com/webpack-contrib/worker-loader)
 
 `npm i -save redux-middleware-workers`
