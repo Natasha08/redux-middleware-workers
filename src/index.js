@@ -18,6 +18,6 @@ const createWorker = ({worker, type, actionHelper=_.identity}) => {
 };
 
 export default function newWorkerMiddleware() {
-  errorCheck(...arguments);
-  return createWorker(...arguments);
+  const noArgumentErrors = errorCheck(...arguments);
+  if (noArgumentErrors) return createWorker(...arguments);
 }
