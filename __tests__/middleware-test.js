@@ -9,38 +9,33 @@ describe('newWorkerMiddleware', () => {
 
   describe('error messaging', () => {
     it('errors when there are no arguments', () => {
-      const errorMessage = 'newWorkerMiddleware expects at least two argments... a worker instance and an action type';
       expect(() => {
         newWorkerMiddleware();
-      }).toThrow(errorMessage);
+      }).toThrow('newWorkerMiddleware expects at least two argments... a worker instance and an action type');
     });
 
     it('errors when the first argument is not a worker', () => {
-      const errorMessage = 'The worker instance must be the first argument and have a postMessage method';
       expect(() => {
         newWorkerMiddleware({worker: 'fake'});
-      }).toThrow(errorMessage);
+      }).toThrow('The worker instance must be the first argument and have a postMessage method');
     });
 
     it('errors when the postMessage of the worker is not a function', () => {
-      const errorMessage = 'The postMessage method of the worker instance must be a function';
       expect(() => {
         newWorkerMiddleware({postMessage: 'fake'});
-      }).toThrow(errorMessage);
+      }).toThrow('The postMessage method of the worker instance must be a function');
     });
 
     it('errors when the action type is not defined', () => {
-      const errorMessage = 'A type must be defined for the scope of the worker instance';
       expect(() => {
         newWorkerMiddleware({postMessage: jest.fn()});
-      }).toThrow(errorMessage);
+      }).toThrow('A type must be defined for the scope of the worker instance');
     });
-    
+
     it('errors the actionHelper is supplied and is not a function', () => {
-      const errorMessage = 'The third argument for newWorkerMiddleware must be a function';
       expect(() => {
         newWorkerMiddleware({postMessage: jest.fn()}, {type: 'foo'}, {actionHelper: 'bar'});
-      }).toThrow(errorMessage);
+      }).toThrow('The third argument for newWorkerMiddleware must be a function');
     });
   });
 });
