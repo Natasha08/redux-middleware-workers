@@ -1,5 +1,4 @@
 import newWorkerMiddleware from '../src/index.js';
-import _ from 'lodash';
 
 describe('newWorkerMiddleware', () => {
   it('creates a new worker', () => {
