@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Natasha08/redux-middleware-workers.svg?style=shield)](https://circleci.com/gh/Natasha08/redux-middleware-workers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![7.10.0](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
+![7.10.0](https://img.shields.io/npm/v/@cycle/core.svg)
 
 ## Recommended Technologies
 [webpack](https://github.com/webpack/webpack)  
