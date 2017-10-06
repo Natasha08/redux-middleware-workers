@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import newWorkerMiddleware from '../src/index.js';
+import newWorkerMiddleware from '../src/middleware.js';
 
 const middlewares = [];
 const mockStore = configureStore(middlewares);
@@ -45,12 +45,13 @@ describe('Middleware Behavior', () => {
   const workerData = 'Whatever I want to pass to the worker';
 
   it('creates a new worker', () => {
-    const worker = {postMessage: jest.fn()};
+    const fakeWorker = {addEventListener: jest.fn(), postMessage: jest.fn()};
     const type = 'foo';
     const actionHelper = jest.fn();
 
-    const newWorker = newWorkerMiddleware(worker, type, actionHelper);
+    const newWorker = newWorkerMiddleware(fakeWorker, type, actionHelper);
     expect(typeof newWorker).toBe('function');
+    expect(fakeWorker.addEventListener).toHaveBeenCalled();
   });
 
   it('calls methods when a new instance of worker is created', function() {
@@ -70,7 +71,6 @@ describe('Middleware Behavior', () => {
     )(store)(fakeNext)(action);
 
     expect(fakeNext).toHaveBeenCalledWith(action);
-    expect(fakeWorker.addEventListener).toHaveBeenCalled();
     expect(fakeWorker.postMessage).toHaveBeenCalled();
     expect(actionHelper).toHaveBeenCalled();
   });
@@ -91,7 +91,6 @@ describe('Middleware Behavior', () => {
     )(store)(fakeNext)(action);
 
     expect(fakeNext).toHaveBeenCalledWith(action);
-    expect(fakeWorker.addEventListener).not.toHaveBeenCalled();
     expect(fakeWorker.postMessage).not.toHaveBeenCalled();
     expect(actionHelper).not.toHaveBeenCalled();
   });
@@ -113,7 +112,6 @@ describe('Middleware Behavior', () => {
     )(store)(fakeNext)(action);
 
     expect(fakeNext).toHaveBeenCalledWith(action);
-    expect(fakeWorker.addEventListener).not.toHaveBeenCalled();
     expect(fakeWorker.postMessage).not.toHaveBeenCalled();
     expect(actionHelper).not.toHaveBeenCalled();
   });
