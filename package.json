@@ -45,7 +45,9 @@
     "url": "https://github.com/Natasha08/redux-middleware-workers/issues"
   },
   "homepage": "https://github.com/Natasha08/redux-middleware-workers#readme",
-  "dependencies": {
+  "devDependencies": {
+    "hjs-webpack": "^9.1.0",
+    "rimraf": "^2.6.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^21.2.0",
@@ -58,9 +60,5 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-mock-store": "^1.3.0"
-  },
-  "devDependencies": {
-    "hjs-webpack": "^9.1.0",
-    "rimraf": "^2.6.2"
   }
 }
