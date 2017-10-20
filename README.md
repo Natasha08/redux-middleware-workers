@@ -23,9 +23,9 @@ import firstWorker from 'worker-loader?inline!./first_worker.js';
 import secondWorker from 'worker-loader?inline!./second_worker.js';
 import newWorkerMiddleware from 'redux-middleware-workers';
 
-const injectObjects = (action, getState) => {
-  const objects = _.get(getState(), 'objects', []);
-  return { ...action, objects };
+const injectTodos = (action, getState) => {
+  const todos = _.get(getState(), 'todos', []);
+  return { ...action, todos };
 };
 
 const injectStore = (action, getState) => {
@@ -33,7 +33,7 @@ const injectStore = (action, getState) => {
   return { ...action, store };
 };
 
-const firstWorkerMiddleware = newWorkerMiddleware(new firstWorker(), 'FIRST_WORKER', injectObjects);
+const firstWorkerMiddleware = newWorkerMiddleware(new firstWorker(), 'FIRST_WORKER', injectTodos);
 const secondWorkerMiddleware = newWorkerMiddleware(new appStorage(), 'SECOND_WORKER', injectStore);
 
 export default [firstWorkerMiddleware, secondWorkerMiddleware];

@@ -44,7 +44,7 @@
 
     Prefix the title of your PR with the issue number.
 
-    See [PULL_REQUEST_TEMPLATE.md](PULL_REQUEST_TEMPLATE.md)
+    See [Pull Request Template](PULL_REQUEST_TEMPLATE.md)
 
 7. Ask one of the main contributors to review your code.
 
