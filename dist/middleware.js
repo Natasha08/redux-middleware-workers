@@ -22,9 +22,8 @@ var createWorker = function createWorker(worker, type) {
 
   worker.addEventListener('message', function (_ref) {
     var data = _ref.data;
-
-    scopedDispatch(data);
-  });
+    return scopedDispatch(data);
+  }, false);
 
   return function (_ref2) {
     var dispatch = _ref2.dispatch,
@@ -37,10 +36,6 @@ var createWorker = function createWorker(worker, type) {
         var meta = action.meta;
 
         if (meta && meta.webworker && meta.type === type) {
-          worker.addEventListener('message', function (_ref3) {
-            var data = _ref3.data;
-            return dispatch(data);
-          }, false);
           worker.postMessage(actionHelper(action, getState));
         }
         return next(action);
