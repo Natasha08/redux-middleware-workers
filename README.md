@@ -1,4 +1,4 @@
-# redux-middleware-workers
+# redux-middleware-workers v1.0.1
 
 [![CircleCI](https://circleci.com/gh/Natasha08/redux-middleware-workers.svg?style=shield)](https://circleci.com/gh/Natasha08/redux-middleware-workers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -33,8 +33,12 @@ const injectStore = (action, getState) => {
   return { ...action, store };
 };
 
+// When you initiate a new worker middleware, the first argument is a new worker.
+// The second argument is the worker type (this is a string).
+// And the third is an optional function that should return an object to pass to the worker.
+
 const firstWorkerMiddleware = newWorkerMiddleware(new firstWorker(), 'FIRST_WORKER', injectTodos);
-const secondWorkerMiddleware = newWorkerMiddleware(new appStorage(), 'SECOND_WORKER', injectStore);
+const secondWorkerMiddleware = newWorkerMiddleware(new secondWorker(), 'SECOND_WORKER', injectStore);
 
 export default [firstWorkerMiddleware, secondWorkerMiddleware];
 ```
@@ -53,6 +57,22 @@ const store = createStore(
 );
 
 export default store;
+```
+
+```
+// action.js
+
+export function activateWorker() {
+  // the meta.type below should match the string passed as a second argument to newWorkerMiddleware in `middleware.js`
+
+  const meta = { webworker: true, type: 'FIRST_WORKER' };
+
+  return {
+    type: 'SECOND_WORKER_LOADING',
+    meta
+  }
+}
+
 ```
 
 [Here](https://github.com/Natasha08/redux-middleware-workers-example) is a working example using multiple webworkers.

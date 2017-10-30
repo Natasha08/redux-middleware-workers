@@ -1,6 +1,6 @@
 {
   "name": "redux-middleware-workers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a multiple workers solution for redux",
   "main": "dist/middleware.js",
   "scripts": {
