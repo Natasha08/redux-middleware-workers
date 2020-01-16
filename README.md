@@ -1,4 +1,4 @@
-# redux-middleware-workers v1.0.1
+# redux-middleware-workers v1.1.0
 
 [![CircleCI](https://circleci.com/gh/Natasha08/redux-middleware-workers.svg?style=shield)](https://circleci.com/gh/Natasha08/redux-middleware-workers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
