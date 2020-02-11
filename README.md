@@ -14,7 +14,7 @@
 
 ### Example
 
-```
+``` js
 // middleware.js
 
 // worker loader is a webpack package that loads the worker for you.
@@ -43,7 +43,7 @@ const secondWorkerMiddleware = newWorkerMiddleware(new secondWorker(), 'SECOND_W
 export default [firstWorkerMiddleware, secondWorkerMiddleware];
 ```
 
-```
+``` js
 // store.js
 
 import { createStore, applyMiddleware } from 'redux';
@@ -59,7 +59,7 @@ const store = createStore(
 export default store;
 ```
 
-```
+``` js
 // action.js
 
 export function activateWorker() {
